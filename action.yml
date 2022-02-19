@@ -21,6 +21,14 @@ inputs:
     required: false
     default: false
 
+  deployment_id:
+    description: Deployment ID to be persisted in variables cache
+    required: false
+
+  extras:
+    description: Extra variables to be passed to step in format var::value,other::value
+    required: false
+
 outputs:
   project_package_version:
     description: Project package version pattern for given stage
@@ -39,8 +47,10 @@ outputs:
   project_release_id:
     description: Relase id associated with current commit
   project_current_deployment_id:
+    description: Deployment id associated with current flow
+  project_active_deployment_id:
     description: Active deployment id associated with specified environment
-  project_current_deployment_sha:
+  project_active_deployment_sha:
     description: Active deployment commit sha associated with specified environment
   project_previous_deployment_id:
     description: Previous deployment id associated with specified environment

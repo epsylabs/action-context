@@ -59,11 +59,11 @@ class GithubProvider:
         active_deployment = get_active_deployment(deployments)
 
         if active_deployment:
-            local["current_deployment_id"] = active_deployment.id
-            local["current_deployment_sha"] = active_deployment.sha
+            local["active_deployment_id"] = active_deployment.id
+            local["active_deployment_sha"] = active_deployment.sha
 
             previous_deployment = get_previous_deployment(deployments, active_deployment)
-            local["previous_deployment_id"] = previous_deployment.id
-            local["previous_deployment_sha"] = previous_deployment.sha
+            local["previous_deployment_id"] = previous_deployment.id if previous_deployment else None
+            local["previous_deployment_sha"] = previous_deployment.sha if previous_deployment else None
 
         return local

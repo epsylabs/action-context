@@ -14,4 +14,11 @@ class ProjectProvider:
             project_id=re.sub(r"\W+", "_", os.getenv("GITHUB_REPOSITORY").split("/")[1])
         )
 
+        local["current_deployment_id"] = core.get_input("deployment_id")
+
+        extras = core.get_input("extras")
+        if extras:
+            for name, value in map(lambda x: x.split("::"), extras.split(",")):
+                local[name.strip()] = value.strip()
+
         return local
