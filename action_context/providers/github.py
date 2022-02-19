@@ -38,7 +38,10 @@ class GithubProvider:
         matched_release = next(filter(lambda x: x.tag_name == os.getenv("GITHUB_REF_NAME"), releases), None)
 
         versions = sorted(map(lambda x: VersionInfo.parse(x.tag_name.strip("v")), releases))
-        current_version = VersionInfo.parse(variables.current_version)
+
+        current_version = None
+        if variables.current_version:
+            current_version = VersionInfo.parse(variables.current_version)
 
         previous_version = previous_release(current_version, versions)
         if previous_version:

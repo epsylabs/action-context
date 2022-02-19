@@ -11,7 +11,7 @@ class ProjectProvider:
     def dump(self, variables):
         local = dict(
             environment=core.get_input("environment"),
-            project_id = re.sub(r"\W+", "_", os.getenv("GITHUB_REPOSITORY").split("/")[1])
+            project_id=re.sub(r"\W+", "_", os.getenv("GITHUB_REPOSITORY").split("/")[1])
         )
 
         return local
