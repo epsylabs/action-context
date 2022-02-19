@@ -22,6 +22,8 @@ inputs:
     default: false
 
 outputs:
+  project_package_version:
+    description: Project package version pattern for given stage
   project_current_version:
     description: Version assigned to current commit
   project_python_version:

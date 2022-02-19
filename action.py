@@ -14,10 +14,10 @@ from action_context.providers.versioning import VersionProvider
 
 def get_variables():
     providers = [
+        ProjectProvider(),
         VersionProvider(),
         PythonProvider(),
         GithubProvider(),
-        ProjectProvider(),
     ]
 
     variables = edict(OrderedDict())
