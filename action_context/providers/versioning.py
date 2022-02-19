@@ -18,9 +18,9 @@ class VersionProvider:
 
         package_version = current_version + "-commit-" + os.getenv("GITHUB_SHA")[0:9]
         if variables.environment == "dev":
-            package_version = current_version + "-b${{ github.run_id }}"
+            package_version = current_version + "-b"+ os.getenv("GITHUB_RUN_ID")
         elif variables.environment == "staging":
-            package_version = current_version + "-rc${{ github.run_id }}"
+            package_version = current_version + "-rc" + os.getenv("GITHUB_RUN_ID")
         elif variables.environment == "prod":
             package_version = current_version
 
