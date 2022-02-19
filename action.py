@@ -3,7 +3,6 @@ import os
 from collections import OrderedDict
 from os.path import isfile
 
-import click as click
 from actions_toolkit import core
 from easydict import EasyDict as edict
 
@@ -29,12 +28,10 @@ def get_variables():
     return variables
 
 
-@click.command()
-@click.option("--cache", default=core.get_input("cache"))
-@click.option("--export", is_flag=True, default=core.get_input("export") == "true")
-@click.option("--work-dir", default=os.getcwd())
-def main(work_dir, cache, export):
-    os.chdir(work_dir)
+def main():
+    cache = core.get_input("cache")
+    export = core.get_input("export") == "true"
+    os.chdir(os.getcwd())
 
     if cache and isfile(cache):
         core.info(f"Loading cache from: {cache}")
