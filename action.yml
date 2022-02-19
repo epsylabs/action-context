@@ -1,0 +1,20 @@
+name: "Extra build information"
+description: "Expose extra context information "
+author: "Epsy Engineering <engieering@epsyhealth.com>"
+
+inputs:
+  github_token:
+    description: Github Token for extra GH context information
+    required: true
+
+
+outputs:
+  critical:
+    description: Number of critical findings
+  high:
+    description: Number of high findings
+
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
