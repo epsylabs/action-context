@@ -22,10 +22,32 @@ inputs:
     default: false
 
 outputs:
-  critical:
-    description: Number of critical findings
-  high:
-    description: Number of high findings
+  project_current_version:
+    description: Version assigned to current commit
+  project_python_version:
+    description: Python version required by project
+  project_release_previous:
+    description: Previous version semantic number
+  project_release_previous_tag:
+    description: Tag associated with previous version
+  project_release_name:
+    description: Relase name associated with current commit
+  project_release_body:
+    description: Relase description associated with current commit
+  project_release_id:
+    description: Relase id associated with current commit
+  project_current_deployment_id:
+    description: Active deployment id associated with specified environment
+  project_current_deployment_sha:
+    description: Active deployment commit sha associated with specified environment
+  project_previous_deployment_id:
+    description: Previous deployment id associated with specified environment
+  project_previous_deployment_sha:
+    description: Previous deployment commit sha associated with specified environment
+  project_environment:
+    description: Associated context environment
+  project_project_id:
+    description: Alphanumeric project id generated baseed on the repository name
 
 
 runs:
