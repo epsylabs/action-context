@@ -1,5 +1,6 @@
 import os
 from collections import OrderedDict
+from pprint import pprint
 
 import click as click
 from actions_toolkit import core
@@ -19,6 +20,8 @@ def main(debug, work_dir, export, save):
         # GithubProvider(),
         # AWSProvider(),
     ]
+
+    pprint(os.environ.__dict__.get("_data"))
 
     variables = OrderedDict()
 
