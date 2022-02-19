@@ -7,6 +7,19 @@ inputs:
     description: Github Token for extra GH context information
     required: true
 
+  environment:
+    description: Environment
+    required: true
+
+  cache:
+    description: Use cache file between executions
+    required: false
+    default: false
+
+  export:
+    description: Export variable as environment variable
+    required: false
+    default: false
 
 outputs:
   critical:

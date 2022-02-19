@@ -10,6 +10,8 @@ actions-toolkit = "^0.1.13"
 click = "^8.0.4"
 toml = "^0.10.2"
 PyGithub = "^1.55"
+semver = "^2.13.0"
+easydict = "^1.9"
 
 [tool.poetry.dev-dependencies]
 
