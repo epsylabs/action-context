@@ -1,3 +1,4 @@
+import json
 import os
 
 from actions_toolkit import core
@@ -64,6 +65,7 @@ class GithubProvider:
         if matched_release:
             local["release_name"] = matched_release.title
             local["release_body"] = matched_release.body
+            local["release_body_json"] = json.dumps(matched_release.body)
             local["release_id"] = matched_release.id
             local["release_url"] = matched_release.html_url
 

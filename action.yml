@@ -46,6 +46,8 @@ outputs:
     description: Relase name associated with current commit
   project_release_body:
     description: Relase description associated with current commit
+  project_release_body_json:
+    description: Json friendly release description
   project_release_id:
     description: Relase id associated with current commit
   project_release_url:
