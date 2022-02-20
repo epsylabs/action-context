@@ -39,6 +39,17 @@ class GithubProvider:
 
         versions = sorted(map(lambda x: VersionInfo.parse(x.tag_name.strip("v")), releases))
 
+        platform = "unknown"
+        topics = repo.get_topics()
+        if "aws" in topics:
+            platform = "aws"
+        elif "android" in topics:
+            platform = "android"
+        elif "ios" in topics:
+            platform = "ios"
+
+        local["platform"] = platform
+
         current_version = None
         if variables.current_version:
             current_version = VersionInfo.parse(variables.current_version)
@@ -54,6 +65,7 @@ class GithubProvider:
             local["release_name"] = matched_release.title
             local["release_body"] = matched_release.body
             local["release_id"] = matched_release.id
+            local["release_url"] = matched_release.html_url
 
         deployments = repo.get_deployments(environment=core.get_input("environment"))
         active_deployment = get_active_deployment(deployments)

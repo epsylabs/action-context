@@ -47,6 +47,7 @@ def main():
     for k, v in variables.items():
         name = f"project_{k}"
         core.set_output(name, v)
+        core.info(f"{name} -> {v}")
         if export:
             core.export_variable(name, v)
 

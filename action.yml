@@ -30,6 +30,8 @@ inputs:
     required: false
 
 outputs:
+  project_platform:
+    description: Platform of the project
   project_package_version:
     description: Project package version pattern for given stage
   project_current_version:
@@ -46,6 +48,8 @@ outputs:
     description: Relase description associated with current commit
   project_release_id:
     description: Relase id associated with current commit
+  project_release_url:
+    description: GitHub URL pointing to the release
   project_current_deployment_id:
     description: Deployment id associated with current flow
   project_active_deployment_id:
