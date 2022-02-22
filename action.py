@@ -33,11 +33,12 @@ def main():
     export = core.get_input("export") == "true"
     os.chdir(os.getcwd())
 
-    if cache and isfile(cache) and not core.get_input("force") == "false":
+    if cache and isfile(cache) and core.get_input("force") == "false":
         core.info(f"Loading cache from: {cache}")
         with open(cache) as f:
             variables = json.load(f)
     else:
+        core.info(f"Loading variables")
         variables = get_variables()
         if cache:
             core.info(f"Dumping cache to: {cache}")
