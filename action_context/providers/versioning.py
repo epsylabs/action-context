@@ -10,21 +10,17 @@ class VersionProvider:
     def dump(self, variables):
         local = {}
 
-        current_version = None
+        current_version = ""
         if isfile(".bumpversion.cfg"):
             config = configparser.ConfigParser()
             config.read(".bumpversion.cfg")
             current_version = config["bumpversion"]["current_version"]
 
-        package_version = current_version + "-commit-" + os.getenv("GITHUB_SHA")[0:9]
-        if variables.environment == "dev":
-            package_version = current_version + "-b" + os.getenv("GITHUB_RUN_NUMBER")
-        elif variables.environment == "staging":
-            package_version = current_version + "-rc" + os.getenv("GITHUB_RUN_NUMBER")
-        elif variables.environment == "prod":
-            package_version = current_version
+        package_version = current_version
+        current_version = current_version.split("-")[0]
 
         local["current_version"] = current_version
         local["package_version"] = package_version
+        local["commit_version"] = f"{current_version}-dev{ os.getenv('GITHUB_RUN_ID') }"
 
         return local
