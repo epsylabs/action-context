@@ -33,7 +33,7 @@ def main():
     export = core.get_input("export") == "true"
     os.chdir(os.getcwd())
 
-    if cache and isfile(cache):
+    if cache and isfile(cache) and not core.get_input("force") == "false":
         core.info(f"Loading cache from: {cache}")
         with open(cache) as f:
             variables = json.load(f)

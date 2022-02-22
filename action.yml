@@ -29,6 +29,11 @@ inputs:
     description: Extra variables to be passed to step in format var::value,other::value
     required: false
 
+  force:
+    description: Ignore cache and reread data
+    required: false
+    default: false
+
 outputs:
   project_platform:
     description: Platform of the project
