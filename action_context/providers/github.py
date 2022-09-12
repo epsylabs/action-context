@@ -14,14 +14,14 @@ def previous_release(current_version, versions):
 
 def get_active_deployment(deployments):
     for deployment in deployments:
-        if "inactive" not in list(map(lambda x: x.state, deployment.get_statuses())):
+        if "success" in list(map(lambda x: x.state, deployment.get_statuses())):
             return deployment
 
 
 def get_previous_deployment(deployments, current_deployment):
     for deployment in deployments:
-        if deployment.id < current_deployment.id and "inactive" in list(
-                map(lambda x: x.state, deployment.get_statuses())):
+        statuses = list(map(lambda x: x.state, deployment.get_statuses()))
+        if deployment.id < current_deployment.id and "inactive" in statuses:
             return deployment
 
 
@@ -69,7 +69,12 @@ class GithubProvider:
             local["release_id"] = matched_release.id
             local["release_url"] = matched_release.html_url
 
-        deployments = repo.get_deployments(environment=core.get_input("environment"))
+        environment = core.get_input("environment")
+
+        if not environment:
+            return local
+
+        deployments = repo.get_deployments(environment=environment)
         active_deployment = get_active_deployment(deployments)
 
         if active_deployment:
