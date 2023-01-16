@@ -1,3 +1,4 @@
 actions_toolkit==0.1.15
 semver==2.13.0
 toml==0.10.2
+easydict==1.9
