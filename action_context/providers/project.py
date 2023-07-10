@@ -1,3 +1,4 @@
+import json
 import os
 import re
 
@@ -21,7 +22,11 @@ class ProjectProvider:
 
         extras = core.get_input("extras")
         if extras:
-            for name, value in map(lambda x: x.split("::"), extras.split(",")):
+            try:
+                extras = json.decode(extras)
+            except Exception as e:
+                extras = map(lambda x: x.split("::"), extras.split(","))
+            for name, value in extras:
                 local[name.strip()] = value.strip()
 
         return local
