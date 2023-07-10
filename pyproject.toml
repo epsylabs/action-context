@@ -6,7 +6,7 @@ authors = ["Michal Przytulski <michal@przytulski.pl>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-actions-toolkit = "^0.1.13"
+actions-toolkit = "^0.1.15"
 toml = "^0.10.2"
 PyGithub = "^1.55"
 semver = "^2.13.0"
